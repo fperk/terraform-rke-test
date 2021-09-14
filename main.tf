@@ -1,17 +1,16 @@
 module "k8s_cluster" {
   source = "git@github.com:brotandgames/terraform-hcloud-rke.git?ref=v1.3.0"
 
-  # Defaults
-  #
-  # addons_include = [
-  # "https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml",
-  # "https://gist.githubusercontent.com/superseb/499f2caa2637c404af41cfb7e5f4a938/raw/930841ac00653fdff8beca61dab9a20bb8983782/k8s-dashboard-user.yml"
-  # ]
-  # docker_version = "18.06.2"
-  # image          = "ubuntu-16.04"
+  addons_include = [
+    "https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.4/aio/deploy/recommended.yaml",
+    "https://gist.githubusercontent.com/superseb/499f2caa2637c404af41cfb7e5f4a938/raw/930841ac00653fdff8beca61dab9a20bb8983782/k8s-dashboard-user.yml"
+  ]
+  
+  image          = "ubuntu-20.04"
+  docker_version = "19.03.13"
 
-  ssh_private_key_path = "./.ssh/id_rsa"
-  ssh_public_key_path  = "./.ssh/id_rsa.pub"
+  ssh_private_key_path = "./.ssh/t2s_fpe_id_rsa"
+  ssh_public_key_path  = "./.ssh/t2s_fpe_id_rsa.pub"
 
   nodes = {
     master1 = {
@@ -21,6 +20,11 @@ module "k8s_cluster" {
     },
     worker1 = {
       name        = "worker1"
+      role        = ["worker"]
+      server_type = "cx21"
+    }
+    worker2 = {
+      name        = "worker2"
       role        = ["worker"]
       server_type = "cx21"
     }
