@@ -1,5 +1,5 @@
 module "k8s_cluster" {
-  source = "git@github.com:brotandgames/terraform-hcloud-rke.git?ref=v1.3.0"
+  source = "git@github.com:brotandgames/terraform-hcloud-rke.git?ref=master"
 
   addons_include = [
     "https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.4/aio/deploy/recommended.yaml",
