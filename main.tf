@@ -9,8 +9,8 @@ module "k8s_cluster" {
   image          = "ubuntu-20.04"
   docker_version = "19.03.13"
 
-  ssh_private_key_path = "./.ssh/t2s_fpe_id_rsa"
-  ssh_public_key_path  = "./.ssh/t2s_fpe_id_rsa.pub"
+  ssh_private_key_path = "~/.ssh/t2s_fpe_id_rsa"
+  ssh_public_key_path  = "~/.ssh/t2s_fpe_id_rsa.pub"
 
   nodes = {
     master1 = {
