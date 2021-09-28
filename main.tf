@@ -15,16 +15,19 @@ module "k8s_cluster" {
   nodes = {
     master1 = {
       name        = "master1"
+      node_name   = "master1"
       role        = ["controlplane", "etcd"]
       server_type = "cx21"
     },
     worker1 = {
       name        = "worker1"
+      node_name   = "worker1"
       role        = ["worker"]
       server_type = "cx21"
     }
     worker2 = {
       name        = "worker2"
+      node_name   = "worker2"
       role        = ["worker"]
       server_type = "cx21"
     }
@@ -39,7 +42,7 @@ output "k8s_cluster_this" {
 # If you need kube_config_cluster.yml for using kubectl,
 # please uncomment the following local_file resource.
 
-# resource "local_file" "kube_cluster_yaml" {
-#   filename          = "${path.root}/kube_config_cluster.yml"
-#   sensitive_content = module.k8s_cluster.kube_config_yaml
-# }
+#resource "local_file" "kube_cluster_yaml" {
+#  filename          = "${path.root}/kube_config_cluster.yml"
+#  sensitive_content = module.k8s_cluster.kube_config_yaml
+#}
